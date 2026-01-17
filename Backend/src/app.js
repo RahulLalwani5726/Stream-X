@@ -5,9 +5,10 @@ import cookieParser from "cookie-parser"
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173', // ✅ RIGHT: Must be the exact Frontend URL
+    origin: 'https://stream-h4ys2uv7g-rahul-lalwanis-projects-8a8f6f82.vercel.app',
     credentials: true
 }));
+
 
 app.use(express.json(
     {
