@@ -4,10 +4,22 @@ import cookieParser from "cookie-parser"
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'https://stream-6wluzy2kw-rahul-lalwanis-projects-8a8f6f82.vercel.app' 
+];
+
 app.use(cors({
-    origin: 'https://stream-h4ys2uv7g-rahul-lalwanis-projects-8a8f6f82.vercel.app',
-    credentials: true
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
+
 
 
 app.use(express.json(
